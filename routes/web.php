@@ -19,7 +19,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/chat', [ChatController::class ,'index'])->name('chat');
+// this route can be used to get the messages using ajax, also it returns the view
+Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+Route::post('/chat', [ChatController::class, 'getMessages'])->name('chat.messages');
+Route::post('/send-message', [ChatController::class, 'sendMessage'])->name('chat.message.send');
 
 Auth::routes();
 

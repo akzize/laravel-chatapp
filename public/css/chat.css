@@ -4,7 +4,14 @@
     padding: 0;
     background-color: #FFF;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    height: 700px;
+    height: 553px;
+}
+
+.crow {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin-right: -.75rem;
+  margin-left: -.75rem; */
 }
 
 /* ===== MENU ===== */
@@ -52,7 +59,7 @@
 
 .discussions {
     width: 35%;
-    height: 700px;
+    height: 100%;
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.20);
     overflow: scroll;
     /* background-color: #cacaca; */
@@ -60,6 +67,10 @@
 
     /* mine code */
     padding: 0;
+}
+
+.contacts {
+    height: 29rem;
 }
 
 .discussions .discussion {
@@ -163,7 +174,7 @@
 }
 
 .discussions .discussion .message {
-    margin: 6px 0 0 20px;
+    margin: 0 0 0 20px;
     font-family: 'Montserrat', sans-serif;
     font-size: 9pt;
     color: #515151;
@@ -181,7 +192,8 @@
 }
 
 .chat {
-    width: calc(65% - 85px);
+    /* width: calc(65% - 85px); */
+    width: 65%;
 }
 
 .header-chat {
@@ -190,6 +202,10 @@
     box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.100);
     display: flex;
     align-items: center;
+
+    /* mine code */
+    z-index: 9999;
+    position: relative;
 }
 
 .chat .header-chat .icon {
@@ -213,6 +229,9 @@
 
 .chat .messages-chat {
     padding: 25px 35px;
+    /* my code */
+    height: 24rem;
+    overflow: scroll;
 }
 
 .chat .messages-chat .message {
@@ -269,7 +288,8 @@
 
 .footer-chat {
     width: calc(65% - 66px);
-    height: 80px;
+    height: 60px;
+    padding-right: 10px;
     display: flex;
     align-items: center;
     /* 
@@ -282,9 +302,11 @@
     /* zakaria's code */
     /* removing position */
 
-    border: 1px solid;
-    width: 100%;
-    justify-content: space-around;
+    border: 1px solid #bbbbbb;
+    border-radius: 50px;
+    width: 95%;
+    justify-content: space-between;
+    margin: auto;
 
 }
 
@@ -301,7 +323,7 @@
     position: absolute;
     right: 50px;
      */
-    padding: 12px 12px 12px 12px;
+    padding: 12px;
     border-radius: 50px;
     font-size: 14pt;
 }
@@ -321,10 +343,14 @@
 
 .write-message {
     border: none !important;
-    width: 60%;
+    width: 100%;
     height: 50px;
-    margin-left: 20px;
+
+    /* margin-left: 20px; */
+
     padding: 10px;
+    outline: none;
+    font-size: 1rem;
 }
 
 .footer-chat *::-webkit-input-placeholder {

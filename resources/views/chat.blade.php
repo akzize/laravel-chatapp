@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('messages.index')
 
 @section('styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -9,7 +9,7 @@
 
 @section('content')
     <div class="ccontainer">
-        <div class="row">
+        <div class="crow">
             {{-- <nav class="menu">
                 <ul class="items">
                     <li class="item">
@@ -41,8 +41,22 @@
                     </div>
                 </div>
                 <div class="contacts">
+                    {{-- to chow my contacts passed from controller --}}
 
-                    <div class="discussion message-active" data-reciever="1">
+                    @foreach ($contacts as $cnt)
+                        <div class="discussion" data-reciever="{{ $cnt->id }}">
+                            <div class="photo"
+                                style="background-image: url(https://i.pinimg.com/originals/a9/26/52/a926525d966c9479c18d3b4f8e64b434.jpg);">
+                                <div class="online"></div>
+                            </div>
+                            <div class="desc-contact">
+                                <p class="name">{{ $cnt->name }}</p>
+                                <p class="message">Let's meet for a coffee or something today ?</p>
+                            </div>
+                            <div class="timer">3 min</div>
+                        </div>
+                    @endforeach
+                    {{-- <div class="discussion message-active" data-reciever="1">
                         <div class="photo"
                             style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
                             <div class="online"></div>
@@ -52,19 +66,8 @@
                             <p class="message">9 pm at the bar if possible 😳</p>
                         </div>
                         <div class="timer">12 sec</div>
-                    </div>
+                    </div> --}}
 
-                    <div class="discussion">
-                        <div class="photo"
-                            style="background-image: url(https://i.pinimg.com/originals/a9/26/52/a926525d966c9479c18d3b4f8e64b434.jpg);">
-                            <div class="online"></div>
-                        </div>
-                        <div class="desc-contact">
-                            <p class="name">Dave Corlew</p>
-                            <p class="message">Let's meet for a coffee or something today ?</p>
-                        </div>
-                        <div class="timer">3 min</div>
-                    </div>
 
                 </div>
             </section>
@@ -72,16 +75,19 @@
                 <div class="header-chat">
                     <i class="icon fa fa-user-o" aria-hidden="true"></i>
                     <p class="name">Megan Leib</p>
-                    <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true"></i>
+                    {{-- <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true"></i> --}}
                 </div>
                 <div class="chat-messages">
-                    <div class="messages-chat">
+                    <div class="messages-chat" id="messages-chat">
                         <div class="message">
                             <div class="photo"
                                 style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
                                 <div class="online"></div>
                             </div>
                             <p class="text"> Hi, how are you ? </p>
+                        </div>
+                        <div class="message text-only">
+                            <p class="text"> What are you doing tonight ? Want to go take a drink ?</p>
                         </div>
                         <div class="message text-only">
                             <p class="text"> What are you doing tonight ? Want to go take a drink ?</p>
@@ -109,8 +115,8 @@
                     </div>
                     <div class="footer-chat">
                         <i class="icon fa fa-smile-o clickable" style="font-size:25pt;" aria-hidden="true"></i>
-                        <input type="text" class="write-message" placeholder="Type your message here"></input>
-                        <i class="icon send fas fa-paper-plane clickable" aria-hidden="true"></i>
+                        <input type="text" class="write-message" id="write-message" placeholder="Type your message here"></input>
+                        <i class="icon send fas fa-paper-plane clickable" aria-hidden="true" id="send_message_btn"></i>
                     </div>
                 </div>
             </section>
