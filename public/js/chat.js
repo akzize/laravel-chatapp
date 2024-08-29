@@ -125,16 +125,28 @@ const inputMessage = htmlElement("#write-message");
 btnSendMessage.onclick = (e) => {
     // alert('Message Sent');
     e.preventDefault();
-    axios
-        .post("/send-message", {
+    fetch("/send-message", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": htmlElement('meta[name="csrf-token"]').getAttribute("content"),
+        },
+        body: JSON.stringify({
             message: inputMessage.value,
             sender: loggedInUser,
             reciever: recieverID,
+        }),
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
         })
         .then((response) => {
-            console.log(response.data);
+            console.log(response.message);
             // to show the message in the sender board
-            showMessagesOrMessage(response.data);;
+            showMessagesOrMessage(response.message);
             inputMessage.value = "";
         })
         .catch((error) => {
